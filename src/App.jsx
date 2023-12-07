@@ -52,12 +52,12 @@ function App() {
   };
 
   const addFav = () => {
-    setFav((prevState) => [...prevState, poke]);
+    // check duplicated and prevent it
+    const fevSet = new Set(fav.map((fevPoke) => fevPoke.id));
+    if (!fevSet.has(poke.id)) {
+      setFav((prevState) => [...prevState, poke]);
+    }
   };
-
-  console.log(poke);
-  console.log(`pokemon ID: ${number}`);
-  console.log(fav);
 
   return (
     <div className="max-w-5xl p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
